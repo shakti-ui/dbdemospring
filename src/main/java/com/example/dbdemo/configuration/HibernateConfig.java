@@ -16,34 +16,34 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 public class HibernateConfig {
-	@Value("${hibernate.dialect}")
+	@Value("${spring.jpa.properties.hibernate.dialect}")
 	private String dialect;
-	@Value("${hibernate.hbm2ddl.auto}")
+	@Value("${spring.jpa.hibernate.ddl-auto}")
     private String hbmAuto;
 
-    @Value("${hibernate.show_sql}")
+    @Value("${spring.jpa.show-sql}")
     private boolean showSQL;
 
-    @Value("${hibernate_format_sql}")
+    @Value("${spring.jpa.properties.hibernate.format_sql}")
     private boolean formatSQL;
 
     @Value("${driver.class.name}")
     private String driverClassName;
 
-    @Value("${url}")
+    @Value("${spring.datasource.url}")
     private String url;
 
-    @Value("${db.username}")
+    @Value("${spring.datasource.username}")
     private String userName;
 
-    @Value("${db.password}")
+    @Value("${spring.datasource.password}")
     private String password;
 
     @Value("${packages.to.scan}")
     private String packagesToScan;
 	public Properties hibernateProperties() {
 		Properties properties =new Properties();
-		properties.put("hibernate.dialect", "dialect");
+		properties.put("hibernate.dialect", dialect);
 		 properties.put("hibernate.hbm2ddl.auto", hbmAuto);
 	        properties.put("hibernate.show_sql", showSQL);
 	        properties.put("hibernate_format_sql", formatSQL);
