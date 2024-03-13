@@ -1,5 +1,7 @@
 package com.example.dbdemo.dao;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,6 +14,9 @@ public class ProductDAOImpl {
 	public void addProduct(ProductDTO productDTO) {
         sessionFactory.getCurrentSession().saveOrUpdate(productDTO);
     }
+	public List<ProductDTO>listAllProducts(){
+		return sessionFactory.getCurrentSession().createQuery("FROM ProductDTO").getResultList();
+	}
 	
 
 }
